@@ -6,13 +6,15 @@ var Pool = require('pg').Pool;
 var app = express();
 app.use(morgan('combined'));
 
-var pool = new Pool({
+var config = {
   user: 'gopalequal',
   host: 'db.imad.hasura-app.io',
   database: 'gopalequal',
   password: 'db-gopalequal-87989',
   port: '5432',
-});
+}; 
+
+var pool = new Pool(config);
 
 var article1={
 		title : 'Article1',
