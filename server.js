@@ -142,7 +142,7 @@ app.get('/testDb', function (req, res) {
         if(err){
             res.status(500).send(err.toString);
         }else{
-            res.send(JSON.Stringify(result));
+            res.send(JSON.stringify(result));
         }
         
     });
@@ -154,7 +154,6 @@ app.get('/testDb', function (req, res) {
 app.get('/:articleName', function (req, res) {
 	var articleName = req.params.articleName;
 	console.log('url requested : '+articleName );
-	console.log('comments  : '+comments );
 	res.send(createTemplate(articles[articleName],comments));
 	});
 	
