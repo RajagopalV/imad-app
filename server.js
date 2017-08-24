@@ -137,7 +137,7 @@ app.get('/submit-comment', function (req, res) { //submit-comment?comment=xxxx
 	});
 	
 app.get('/testDb', function (req, res) {
-    
+    console.log("Inside test db");
     pool.query('SELECT * FROM article',function(err,result){
         if(err){
             res.status(500).send(err.toString);
