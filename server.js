@@ -128,7 +128,7 @@ app.get('/ui/main.js', function (req, res) {
 
 var comments = [];
 app.get('/submit-comment', function (req, res) { //submit-comment?comment=xxxx
-	 console.log("Inside submit-comment");
+	 console.log('Inside submit-comment');
 	var comment = req.query.comment;
 	comments.push(comment);
 	//JSON changes
@@ -137,7 +137,7 @@ app.get('/submit-comment', function (req, res) { //submit-comment?comment=xxxx
 	});
 	
 app.get('/testDb', function (req, res) {
-    console.log("Inside test db");
+    console.log('Inside test db');
     pool.query('SELECT * FROM article',function(err,result){
         if(err){
             res.status(500).send(err.toString);
