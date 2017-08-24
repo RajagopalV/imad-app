@@ -11,7 +11,7 @@ var config = {
   host: 'db.imad.hasura-app.io',
   database: 'gopalequal',
   password: 'db-gopalequal-87989',
-  port: '5432',
+  port: '5432'
 }; 
 
 var pool = new Pool(config);
