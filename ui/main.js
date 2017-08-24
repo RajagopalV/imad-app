@@ -31,7 +31,7 @@ button.onclick = function(){
 	}
 	
 	//Make request
-	httpRequest.open('GET','http://localhost/submit-comment?comment='+comment,true);
+	httpRequest.open('GET','http://gopalequal.imad.hasura-app.io/submit-comment?comment='+comment,true);
 	httpRequest.send(null);
 	
 	
