@@ -20,3 +20,48 @@ body {
     height: 200px;
 }
 
+.container {
+	max-width: 800px;
+	margin: 10 auto;
+	color: #984040;
+	font-family: fantasy;
+	padding-left: 10px;
+	padding-top: 50px;
+	zoom: initial;
+	background-color: #fbf3f3;
+}
+
+.comments{
+	max-width: 400;
+    margin: auto;
+    color: #6f2221;
+    font-family: serif;
+    padding-left: 10px;
+    padding-top: 0px;
+    zoom: initial;
+    background-color: #d0cab8;
+
+}
+
+.commentsSection{
+	    max-width: 400;
+    margin: 10 auto;
+    font-family: serif;
+    padding-left: 0px;
+    padding-top: 0px;
+    zoom: initial;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #9E9E9E;
+    list-style-position: inside;
+}
+
+li {
+ color: white;
+    text-align: left;
+    padding: 6px;
+    text-decoration: blink;
+}
