@@ -1,14 +1,12 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
+var Pool = require('pg').Pool;
 
 var app = express();
 app.use(morgan('combined'));
 
-
-const { Pool } = require('pg');
-
-const pool = new Pool({
+var pool = new Pool({
   user: 'gopalequal',
   host: 'db.imad.hasura-app.io',
   database: 'gopalequal',
