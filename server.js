@@ -6,7 +6,7 @@ var app = express();
 app.use(morgan('combined'));
 
 
-const { Pool } = require('pg')
+const { Pool } = require('pg');
 
 const pool = new Pool({
   user: 'gopalequal',
@@ -14,7 +14,7 @@ const pool = new Pool({
   database: 'gopalequal',
   password: 'db-gopalequal-87989',
   port: 5432,
-})
+});
 
 var article1={
 		title : 'Article1',
