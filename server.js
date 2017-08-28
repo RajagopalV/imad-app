@@ -86,7 +86,8 @@ function createTemplate(data,comments){
 	        }
 	        document.getElementById("commentList").innerHTML = myFunction('${comment}');
 	        </script>
-	    
+	     <script type ="text/javaScript" src="ui/main.js">
+	    </script>
 	    </div>
 	    </body>
 	</html>`;
