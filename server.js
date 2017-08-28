@@ -153,13 +153,13 @@ app.get('/testDb', function (req, res) {
 
 app.get('/article/:articleName', function (req, res) {
     
-    
-    pool.query('SELECT * FROM article WHERE title = '+ articleName,function(err,result){
+    console.log('url requested : '+req.params.articleName );
+    pool.query('SELECT * FROM article WHERE title = '+ req.params.articleName,function(err,result){
         if(err){
             res.status(500).send(err.toString);
         }else{
             
-            if(result.rows.lenght === 0){
+            if(result.rows.length === 0){
                  res.status(404).send("Article not found!!!");
             }else{
                 res.send(createTemplate(result.rows[0],comments));
@@ -167,9 +167,9 @@ app.get('/article/:articleName', function (req, res) {
         }
         
     });
-	var articleName = req.params.articleName;
-	console.log('url requested : '+articleName );
-	res.send(createTemplate(articles[articleName],comments));
+	//var articleName = req.params.articleName;
+	
+	//res.send(createTemplate(articles[articleName],comments));
 	});
 	
 
