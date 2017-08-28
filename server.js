@@ -140,7 +140,7 @@ app.get('/testDb', function (req, res) {
     console.log('Inside test db');
     pool.query("SELECT * FROM article WHERE title='Article1'",function(err,result){
         if(err){
-            res.status(500).send(err.toString);
+            res.status(500).send(err.toString());
         }else{
             res.send(JSON.stringify(result.rows));
         }
@@ -154,9 +154,9 @@ app.get('/testDb', function (req, res) {
 app.get('/article/:articleName', function (req, res) {
     
     console.log('url requested : '+req.params.articleName );
-    pool.query('SELECT * FROM article WHERE title = '+ req.params.articleName,function(err,result){
+    pool.query("SELECT * FROM article WHERE title = '"+ req.params.articleName +"'",function(err,result){
         if(err){
-            res.status(500).send(err.toString);
+            res.status(500).send(err.toString());
         }else{
             
             if(result.rows.length === 0){
