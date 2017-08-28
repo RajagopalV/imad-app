@@ -88,8 +88,6 @@ function createTemplate(data,comments){
 	        </script>
 	    
 	    </div>
-	    <script type ="text/javaScript" src="ui/main.js">
-	    </script>
 	    </body>
 	</html>`;
 	
