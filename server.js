@@ -25,12 +25,6 @@ var article1={
 };
 
 
-function hash(input,salt){
-    
-    var hashed = crypto.pbkdf2Sync(input,salt,100,512,'sha512');
-    return hashed.toString('hex');
-}
-
 
 function createTemplate(data,comments){
 	var comment =[];
@@ -156,7 +150,8 @@ app.get('/testDb', function (req, res) {
     
 });
     
-app.get('/hashed/:input',function(req,res){
+app.get('/hash/:input',function(req,res){
+    
     
     res.send(hash(req.params.input,'random-string'));
     
@@ -183,6 +178,12 @@ app.get('/article/:articleName', function (req, res) {
 	//res.send(createTemplate(articles[articleName],comments));
 	});
 	
+
+function hash(input,salt){
+    
+    var hashed = crypto.pbkdf2Sync(input,salt,100,512,'sha512');
+    return ["pbkdf2","100",salt,hashed.toString('hex')].join('$');
+}
 
 
 // Do not change port, otherwise your app won't run on IMAD servers
