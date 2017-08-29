@@ -194,7 +194,7 @@ app.post('/login',function(req,res){
                     var salt = dbString.split('$')[2];
                     var hashed = hash(password,salt);
                     
-                    if(hashed === dbSrting){
+                    if(hashed === dbString){
                         res.send("Credential matched !!!!");
                     }else{
                         
