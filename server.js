@@ -158,6 +158,7 @@ app.get('/hash/:input',function(req,res){
     
 });
 
+//curl -XPOST -H 'Content-Type: application/json' --data '{"username" : "raja", "password" : "password"}' http://gopalequal.imad.hasura-app.io/createuser 
 app.post('/createuser',function(req,res){
     
     var username = req.body.username;
@@ -165,11 +166,42 @@ app.post('/createuser',function(req,res){
     
     var salt = crypto.randomBytes(128).toString('hex');
     var dbString = hash(password,salt);
-    pool.query('INSERT INTO "user" (userName,password) VALUES ($1,$2)',[username,dbString],function(err,result){
+    pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)',[username,dbString],function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
                 res.send(JSON.stringify(result.rows));
+            }
+    });
+    
+});
+
+
+app.post('/login',function(req,res){
+    
+    var username = req.body.username;
+    var password = req.body.password;
+    
+    pool.query('SLECET * FROM "user" WHERE username == $1',[username],function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+                if(result.rows.length === 0){
+                    res.send('username/password is invalid');
+                }else{
+                    //Match dbString
+                    var dbString = result.rows[0].password;
+                    var salt = dbString.split('$')[2];
+                    var hased = hash(password,salt);
+                    
+                    if(hashed === dbSrting){
+                        res.send("Credential matched !!!!");
+                    }else{
+                        
+                    res.status(403).send("Credential not matched");
+                    }
+                    
+                }
             }
     });
     
