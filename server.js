@@ -4,10 +4,15 @@ var path = require('path');
 var Pool = require('pg').Pool;
 var crypto = require('crypto');
 var bodyparser = require('body-parser');
+var session = require('express-session');
 
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyparser.json());
+app.use(session({
+    secret :'somesecretvalue',
+    cookie : {maxAge : 1000 * 60 * 60  *24 *30 }
+}));
 
 var config = {
   user: 'gopalequal',
@@ -196,6 +201,10 @@ app.post('/login',function(req,res){
                     var hashed = hash(password,salt);
                     
                     if(hashed === dbString){
+                        
+                        //session id
+                        req.session.auth = {userId : result.rows[0].id};
+                        
                         res.send("Credential matched !!!!");
                     }else{
                         
@@ -205,6 +214,23 @@ app.post('/login',function(req,res){
                 }
             }
     });
+    
+});
+
+app.get('/checklogin',function(req,res){
+    
+    if(req.session & req.session.auth && req.session.auth.userId){
+        res.send("You are logged in  : "+ req.session.auth.userId.toString());
+    }else{
+        res.send("You not logged in");
+    }
+    
+});
+
+app.get('/logout',function(req,res){
+    
+    delete auth.session.auth;
+    res.send('Logged out!!!!');
     
 });
 
