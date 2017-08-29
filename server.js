@@ -186,8 +186,6 @@ app.post('/login',function(req,res){
     
     var username = req.body.username;
     var password = req.body.password;
-    console.log("username -->"+username);
-    console.log("password ---> "+ password);    
     pool.query('SELECT * FROM "user" WHERE username = $1',[username],function(err,result){
         if(err){
             res.status(500).send(err.toString());
@@ -219,10 +217,10 @@ app.post('/login',function(req,res){
 
 app.get('/checklogin',function(req,res){
     
-    if(req.session & req.session.auth && req.session.auth.userId){
+    if(req.session && req.session.auth && req.session.auth.userId){
         res.send("You are logged in  : "+ req.session.auth.userId.toString());
     }else{
-        res.send("You not logged in");
+        res.send("You are not logged in");
     }
     
 });
