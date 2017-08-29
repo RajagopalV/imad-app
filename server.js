@@ -187,7 +187,7 @@ app.post('/login',function(req,res){
             res.status(500).send(err.toString());
         }else{
                 if(result.rows.length === 0){
-                    res.send("username/password is invalid");
+                    res.status(403).send("username/password is invalid");
                 }else{
                     //Match dbString
                     var dbString = result.rows[0].password;
