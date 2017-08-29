@@ -187,12 +187,12 @@ app.post('/login',function(req,res){
             res.status(500).send(err.toString());
         }else{
                 if(result.rows.length === 0){
-                    res.send('username/password is invalid');
+                    res.send("username/password is invalid");
                 }else{
                     //Match dbString
                     var dbString = result.rows[0].password;
                     var salt = dbString.split('$')[2];
-                    var hased = hash(password,salt);
+                    var hashed = hash(password,salt);
                     
                     if(hashed === dbSrting){
                         res.send("Credential matched !!!!");
