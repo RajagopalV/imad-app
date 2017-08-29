@@ -3,9 +3,11 @@ var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
 var crypto = require('crypto');
+var bodyparser = require('body-parser');
 
 var app = express();
 app.use(morgan('combined'));
+app.use(bodyparser.json());
 
 var config = {
   user: 'gopalequal',
@@ -152,8 +154,24 @@ app.get('/testDb', function (req, res) {
     
 app.get('/hash/:input',function(req,res){
     
-    
     res.send(hash(req.params.input,'random-string'));
+    
+});
+
+app.post('/createuser',function(req,res){
+    
+    var username = req.body.username;
+    var password = req.body.password;
+    
+    var salt = crypto.getRandomBytes(128).toString('hex');
+    var dbString = hash(password,salt);
+    pool.quey('INSERT INTO "user" (userName,pawword) VALUES ($1,$2)',[username,dbString],function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+                res.send(JSON.stringify(result.rows));
+            }
+    });
     
 });
 
