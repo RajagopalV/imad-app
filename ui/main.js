@@ -26,6 +26,7 @@ button1.onclick = function(){
 	console.log("password --" + password);
 	//Make request
 	httpRequest.open('POST','http://gopalequal.imad.hasura-app.io/login',true);
+	httpRequest.setRequestHeader('Content-Type: application/json');
 	httpRequest.send(JSON.stringify({username:username , password:password}));
 	
 	
