@@ -13,7 +13,7 @@ button1.onclick = function(){
 			//response received
 			if(httpRequest.status === 200){
 			    alert('Logged in successfully!!');
-			    document.getElementById("loginSection").innerHTML = "<p>Logged in </p>";
+			    document.getElementById("loginSection").innerHTML = '<p>Logged in </p>';
 			} else if(httpRequest.status === 403){
 			    alert('username/password is invalid');
 			}else if(httpRequest.status === 500){
