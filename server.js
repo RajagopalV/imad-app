@@ -201,7 +201,7 @@ app.post('/login',function(req,res){
                     if(hashed === dbString){
                         
                         //session id
-                        req.session.auth = {userId : result.rows[0].id};
+                        //req.session.auth = {userId : result.rows[0].id};
                         
                         res.send("Credential matched !!!!");
                     }else{
