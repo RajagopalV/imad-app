@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
+var crypto = require('crypto');
 
 var app = express();
 app.use(morgan('combined'));
@@ -22,6 +23,13 @@ var article1={
 		date : '10 Aug 2017',
 		content : `<p> Content of the first article</p>`
 };
+
+
+function hash(input,salt){
+    
+    var hashed = crypto.pbkdf2Sync(input,salt,100,512,'sha512');
+    return hashed.toString('hex');
+}
 
 
 function createTemplate(data,comments){
@@ -148,7 +156,11 @@ app.get('/testDb', function (req, res) {
     
 });
     
-
+app.get('/hashed/:input',function(req,res){
+    
+    res.send(hash(req.params.input,'random-string'));
+    
+});
 
 app.get('/article/:articleName', function (req, res) {
     
