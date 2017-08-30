@@ -86,9 +86,12 @@ checkloginfunction();
     			if(httpRequest.status == 200){
     			 if(document.getElementById('loginSection') !== null){
                     document.getElementById('loginSection').innerHTML = '<div><p>Logged in </p></div>';
+                     document.getElementById('commentButton').disabled = false;
     			 }
     			} else if(httpRequest.status == 404){
-    			    
+    			    if(button !== null){
+    			        document.getElementById('commentButton').disabled = true;
+    			    }
     		}
     	}
     	}
