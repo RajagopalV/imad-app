@@ -2,7 +2,7 @@ console.log("Loaded!!");
 
 var button1 = document.getElementById('submit_btn');
 
-if(button !== null){
+if(button1 !== null){
     button1.onclick = function(){
     	
     	//http request
