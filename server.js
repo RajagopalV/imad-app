@@ -249,7 +249,7 @@ app.get('/logout',function(req,res){
 app.get('/article/:articleName', function (req, res) {
     
     console.log('url requested : '+req.params.articleName );
-    pool.query("SELECT article.title,article.heading,article.date,article.content,comment.comment FROM article JOIN comment ON comment.article_id = article.id WHERE article.title ='"+ req.params.articleName +"'",function(err,result){
+    pool.query("SELECT article.id,article.title,article.heading,article.date,article.content,comment.comment FROM article JOIN comment ON comment.article_id = article.id WHERE article.title ='"+ req.params.articleName +"'",function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
