@@ -84,10 +84,11 @@ checkloginfunction();
     			//response received
     			if(httpRequest.status == 200){
                     document.getElementById('loginSection').innerHTML = '<div><p>Logged in </p></div>';
-    			}
+    			} else if(httpRequest.status == 404){
+    			    
     		}
     	}
-    	
+    	}
     	//Make request
     	httpRequest.open('POST','http://gopalequal.imad.hasura-app.io/checklogin',true);
     	httpRequest.send(null);
