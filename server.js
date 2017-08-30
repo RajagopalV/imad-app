@@ -156,7 +156,7 @@ app.get('/submit-comment', function (req, res) { //submit-comment?comment=xxxx
 	
 app.get('/testDb', function (req, res) {
     console.log('Inside test db');
-    pool.query("SELECT * FROM article WHERE title='Article1'",function(err,result){
+    pool.query("SELECT article.tile,article.heading,article.date,article.content FROM article WHERE title='Article1'",function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
@@ -241,6 +241,7 @@ app.get('/logout',function(req,res){
     res.send('Logged out!!!!');
     
 });
+
 
 app.get('/article/:articleName', function (req, res) {
     
