@@ -42,6 +42,7 @@ function createTemplate(data){
 	for(var i=0; i<data.length ; i++){
 	    comment[i] = data[0].comment;
 	}
+	console.log("comments-->"+comment);
 	var content = data[0].content;
 
 	var htmltemplate= 
@@ -87,16 +88,16 @@ function createTemplate(data){
     		
     		</div>
     		<script type="text/javascript">
-	        function myFunction(){
+	        function myFunction(comment){
 	        	var list='';
 				
-				for(var i=0;i<arguments.length;i++){
+				for(var i=0;i<comment.length;i++){
 					list += '<li>' + arguments[i] + '</li>';
 				}
 				console.log("myfunction output "+ list);
 				return list;
 	        }
-	        document.getElementById("commentList").innerHTML = myFunction('${comment}');
+	        document.getElementById("commentList").innerHTML = myFunction(${comment});
 	        </script>
 	     <script type ="text/javaScript" src="/ui/main.js">
 	    </script>
