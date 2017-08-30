@@ -257,7 +257,7 @@ app.get('/article/:articleName', function (req, res) {
             if(result.rows.length === 0){
                  res.status(404).send("Article not found!!!");
             }else{
-                 req.session.auth.articleId = result.rows[0].id;
+                 //req.session.auth.articleId = result.rows[0].id;
                 res.send(createTemplate(result.rows));
             }
         }
