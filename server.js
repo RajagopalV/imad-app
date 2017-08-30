@@ -139,7 +139,8 @@ app.get('/submit-comment', function (req, res) { //submit-comment?comment=xxxx
 	 console.log('Inside submit-comment');
 	var comment = req.query.comment;
 	var userId = req.session.auth.userId;
-	pool.query("INSERT INTO comment (article_id,user_id,comment) VALUES ($1,$2,$3)",[1,userId,comment],function(err,result){
+	var articleId = req.session.auth.articleId;
+	pool.query("INSERT INTO comment (article_id,user_id,comment) VALUES ($1,$2,$3)",[articleId,userId,comment],function(err,result){
 	    if(err){
             res.status(500).send(err.toString());
         }else{
@@ -252,6 +253,7 @@ app.get('/article/:articleName', function (req, res) {
             if(result.rows.length === 0){
                  res.status(404).send("Article not found!!!");
             }else{
+                 req.session.auth.articleId = result.rows[0].id;
                 res.send(createTemplate(result.rows[0],comments));
             }
         }
