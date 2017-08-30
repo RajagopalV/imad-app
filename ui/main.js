@@ -84,7 +84,9 @@ checkloginfunction();
     		if(httpRequest.readyState == XMLHttpRequest.DONE){
     			//response received
     			if(httpRequest.status == 200){
+    			 if(document.getElementById('loginSection') !== null){
                     document.getElementById('loginSection').innerHTML = '<div><p>Logged in </p></div>';
+    			 }
     			} else if(httpRequest.status == 404){
     			    
     		}
