@@ -74,7 +74,7 @@ if(button !== null){
 
 checkloginfunction();
 
-	checkloginfunction(){
+	function checkloginfunction(){
 	//http request
     	
     	var httpRequest = new XMLHttpRequest();
@@ -93,4 +93,4 @@ checkloginfunction();
     	httpRequest.send(null);
 
 
-}
+};
