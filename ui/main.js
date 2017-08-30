@@ -2,35 +2,36 @@ console.log("Loaded!!");
 
 var button1 = document.getElementById('submit_btn');
 
-button1.onclick = function(){
-	
-	//http request
-	
-	var httpRequest = new XMLHttpRequest();
-	
-	httpRequest.onreadystatechange = function(){
-		if(httpRequest.readyState === XMLHttpRequest.DONE){
-			//response received
-			if(httpRequest.status === 200){
-			    alert('Logged in successfully!!');
-			    document.getElementById('loginSection').innerHTML = '<div><p>Logged in </p></div>';
-			} else if(httpRequest.status === 403){
-			    alert('username/password is invalid');
-			}else if(httpRequest.status === 500){
-			    alert('Server problem');
-			}
-		}
-	};
-	var username = document.getElementById('username').value;
-	var password = document.getElementById('password').value;
-	console.log("username --" + username);
-	console.log("password --" + password);
-	//Make request
-	httpRequest.open('POST','http://gopalequal.imad.hasura-app.io/login',true);
-	httpRequest.setRequestHeader('Content-Type', 'application/json');
-	httpRequest.send(JSON.stringify({username:username , password:password}));
-	
-	
+if(button !== null){
+    button1.onclick = function(){
+    	
+    	//http request
+    	
+    	var httpRequest = new XMLHttpRequest();
+    	
+    	httpRequest.onreadystatechange = function(){
+    		if(httpRequest.readyState === XMLHttpRequest.DONE){
+    			//response received
+    			if(httpRequest.status === 200){
+    			    alert('Logged in successfully!!');
+    			    document.getElementById('loginSection').innerHTML = '<div><p>Logged in </p></div>';
+    			} else if(httpRequest.status === 403){
+    			    alert('username/password is invalid');
+    			}else if(httpRequest.status === 500){
+    			    alert('Server problem');
+    			}
+    		}
+    	};
+    	var username = document.getElementById('username').value;
+    	var password = document.getElementById('password').value;
+    	console.log("username --" + username);
+    	console.log("password --" + password);
+    	//Make request
+    	httpRequest.open('POST','http://gopalequal.imad.hasura-app.io/login',true);
+    	httpRequest.setRequestHeader('Content-Type', 'application/json');
+    	httpRequest.send(JSON.stringify({username:username , password:password}));
+    	
+    }	
 };
 
 var button = document.getElementById('commentButton');
