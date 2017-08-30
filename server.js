@@ -33,13 +33,16 @@ var article1={
 
 
 
-function createTemplate(data,comments){
+function createTemplate(data){
 	var comment =[];
-	comment =comments;
-	var title = data.title;
-	var heading = data.heading;
-	var date = data.date;
-	var content = data.content;
+	var title = data[0].title;
+	var heading = data[0].heading;
+	var date = data[0].date;
+	
+	for(var i=0; i<data.length ; i++){
+	    comment[i] = data[0].comment;
+	}
+	var content = data[0].content;
 
 	var htmltemplate= 
 			`
@@ -246,7 +249,7 @@ app.get('/logout',function(req,res){
 app.get('/article/:articleName', function (req, res) {
     
     console.log('url requested : '+req.params.articleName );
-    pool.query("SELECT * FROM article WHERE title = '"+ req.params.articleName +"'",function(err,result){
+    pool.query("SELECT article.title,article.heading,article.date,article.content,comment.comment FROM article JOIN comment ON comment.article_id = article.id WHERE article.title ='"+ req.params.articleName +"'",function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
@@ -255,7 +258,7 @@ app.get('/article/:articleName', function (req, res) {
                  res.status(404).send("Article not found!!!");
             }else{
                  req.session.auth.articleId = result.rows[0].id;
-                res.send(createTemplate(result.rows[0],comments));
+                res.send(createTemplate(result.rows));
             }
         }
         
