@@ -93,4 +93,4 @@ checkloginfunction();
     	httpRequest.send(null);
 
 
-};
+}
