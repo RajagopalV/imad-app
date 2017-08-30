@@ -156,7 +156,7 @@ app.get('/submit-comment', function (req, res) { //submit-comment?comment=xxxx
 	
 app.get('/testDb', function (req, res) {
     console.log('Inside test db');
-    pool.query("SELECT article.title,article.heading,article.date,article.content,comment.comment FROM article AS ai JOIN comment AS co ON ai.id=co.artice_id WHERE ai.title = 'article1'",function(err,result){
+    pool.query("SELECT article.title,article.heading,article.date,article.content,comment.comment FROM article AS ai JOIN comment AS co ON ai.id=co.article_id WHERE ai.title = 'article1'",function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
