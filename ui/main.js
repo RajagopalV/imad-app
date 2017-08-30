@@ -71,3 +71,26 @@ if(button !== null){
     	
     }
 }
+
+checkloginfunction();
+
+	checkloginfunction(){
+	//http request
+    	
+    	var httpRequest = new XMLHttpRequest();
+    	
+    	httpRequest.onreadystatechange = function(){
+    		if(httpRequest.readyState == XMLHttpRequest.DONE){
+    			//response received
+    			if(httpRequest.status == 200){
+                    document.getElementById('loginSection').innerHTML = '<div><p>Logged in </p></div>';
+    			}
+    		}
+    	}
+    	
+    	//Make request
+    	httpRequest.open('POST','http://gopalequal.imad.hasura-app.io/checklogin',true);
+    	httpRequest.send(null);
+
+
+}
