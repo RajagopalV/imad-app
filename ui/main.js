@@ -37,6 +37,45 @@ if(button1 !== null){
     }	
 };
 
+
+
+var signup_btn = document.getElementById('signup_submit_btn');
+
+if(signup_btn !== null){
+    signup_btn.onclick = function(){
+    	
+    	//http request
+    	
+    	var httpRequest = new XMLHttpRequest();
+    	
+    	httpRequest.onreadystatechange = function(){
+    		if(httpRequest.readyState === XMLHttpRequest.DONE){
+    			//response received
+    			if(httpRequest.status === 200){
+    			    alert('User create and Logged in successfully!!');
+    			    document.getElementById('loginSection').innerHTML = "<div><p>Logged in </p><button id='logoutbtn'>Logout</button></div>";
+    			    logoutfunction();
+    			    
+    			    
+    			} else if(httpRequest.status === 403){
+    			    alert('could not create user');
+    			}else if(httpRequest.status === 500){
+    			    alert('Server problem');
+    			}
+    		}
+    	};
+    	var username = document.getElementById('signup_username').value;
+    	var password = document.getElementById('signup_password').value;
+    	console.log("username --" + username);
+    	console.log("password --" + password);
+    	//Make request
+    	httpRequest.open('POST','http://gopalequal.imad.hasura-app.io/createuser',true);
+    	httpRequest.setRequestHeader('Content-Type', 'application/json');
+    	httpRequest.send(JSON.stringify({username:username , password:password}));
+    	
+    }	
+};
+
 function logoutfunction(){
     var loggout_button = document.getElementById('logoutbtn');
     
