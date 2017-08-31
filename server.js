@@ -245,7 +245,7 @@ app.get('/logout',function(req,res){
 app.get('/article/:articleName', function (req, res) {
     
     console.log('url requested : '+req.params.articleName );
-    pool.query('SELECT article.title,article.heading,article.date,article.content,comment.comment,"user".username FROM article LEFT JOIN comment ON comment.article_id = article.id LEFT JOIN "user" ON "user".id = comment.user_id WHERE article.title = $1',[req.params.articleName],function(err,result){
+    pool.query('SELECT article.id,article.title,article.heading,article.date,article.content,comment.comment,"user".username FROM article LEFT JOIN comment ON comment.article_id = article.id LEFT JOIN "user" ON "user".id = comment.user_id WHERE article.title = $1',[req.params.articleName],function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
