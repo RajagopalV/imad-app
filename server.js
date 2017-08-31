@@ -143,7 +143,7 @@ app.get('/submit-comment', function (req, res) { //submit-comment?comment=xxxx
 	var comment = req.query.comment;
 	var articleId = req.session.auth.articleId;
 	var userId = req.session.auth.userId;
-	pool.query("INSERT INTO comment (article_id,user_id,comment) VALUES ($1,$2,$3)",[1,userId,comment],function(err,result){
+	pool.query("INSERT INTO comment (article_id,user_id,comment) VALUES ($1,$2,$3)",[articleId,userId,comment],function(err,result){
 	    if(err){
             res.status(500).send(err.toString());
         }else{
