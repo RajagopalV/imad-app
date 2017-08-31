@@ -155,7 +155,7 @@ app.get('/submit-comment', function (req, res) { //submit-comment?comment=xxxx
 	
 app.get('/testDb', function (req, res) {
     console.log('Inside test db');
-    pool.query("SELECT article.title,article.heading,article.date,article.content,comment.comment,user.username FROM article LEFT JOIN comment ON comment.article_id = article.id WHERE article.title = 'article1'",function(err,result){
+    pool.query('SELECT article.title,article.heading,article.date,article.content,comment.comment,"user".username FROM article LEFT JOIN comment ON comment.article_id = article.id LEFT JOIN "user" ON "user".id = comment.userd_id WHERE article.title = "article1"',function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
