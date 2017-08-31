@@ -60,7 +60,7 @@ if(button !== null){
     				// 	list += '<li>' + comments[i] + '</li><br><hr>';
     				// }
     				var text='<li>'+comment+'</li>'
-    				 document.getElementById('commentList').appendChild();
+    				 document.getElementById('commentList').appendChild(text);
     				//ul.innerHTML = list;
     				
     			}
