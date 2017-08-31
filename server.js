@@ -97,7 +97,7 @@ function createTemplate(data){
 				console.log("myfunction output "+ list);
 				return list;
 	        }
-	        document.getElementById("commentList").innerHTML = myFunction(${comment});
+	        document.getElementById("commentList").innerHTML = myFunction($comment);
 	        </script>
 	     <script type ="text/javaScript" src="/ui/main.js">
 	    </script>
