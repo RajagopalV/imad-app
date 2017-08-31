@@ -156,7 +156,7 @@ app.get('/submit-comment', function (req, res) { //submit-comment?comment=xxxx
 	
 app.get('/testDb', function (req, res) {
     console.log('Inside test db');
-    pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)',['raja6','password'],function(err,result){
+    pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)',['raja7','password'],function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
