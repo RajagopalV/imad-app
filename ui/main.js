@@ -52,7 +52,7 @@ if(signup_btn !== null){
     		if(httpRequest.readyState === XMLHttpRequest.DONE){
     			//response received
     			if(httpRequest.status === 200){
-    			    alert('User create and Logged in successfully!!');
+    			    alert('User created successfully!!');
     			    document.getElementById('signupSection').innerHTML = "<div></div>";
     			    //logoutfunction();
     			    
