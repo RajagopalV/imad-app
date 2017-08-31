@@ -40,7 +40,8 @@ function createTemplate(data){
 	var date = data[0].date;
 	
 	for(var i=0; i<data.length ; i++){
-	    comment[i] = data[0].comment;
+	    comment[i] = data[i].username + " : " + data[i].comment;
+	    
 	}
 	console.log("comments-->"+comment);
 	var content = data[0].content;
