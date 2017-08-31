@@ -14,7 +14,7 @@ if(button1 !== null){
     			//response received
     			if(httpRequest.status === 200){
     			    alert('Logged in successfully!!');
-    			    document.getElementById('loginSection').innerHTML = "<div><p>Logged in </p><br> <button id='loggout_btn'>Logout</button></div>";
+    			    document.getElementById('loginSection').innerHTML = "<div><p>Logged in </p><button id='loggout_btn'>Logout</button></div>";
     			} else if(httpRequest.status === 403){
     			    alert('username/password is invalid');
     			}else if(httpRequest.status === 500){
@@ -37,7 +37,7 @@ if(button1 !== null){
 var loggout_button = document.getElementById('loggout_btn');
 
 if(loggout_button !== null){
-     button.onclick = function(){
+     loggout_button.onclick = function(){
          //http request
     	
     	var httpRequest = new XMLHttpRequest();
