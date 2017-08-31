@@ -52,15 +52,16 @@ if(button !== null){
     		if(httpRequest.readyState == XMLHttpRequest.DONE){
     			//response received
     			if(httpRequest.status == 200){
-    				var comments = httpRequest.responseText;
-    				comments = JSON.parse(comments);
-    				var list='';
+    				// var comments = httpRequest.responseText;
+    				// comments = JSON.parse(comments);
+    				// var list='';
     				
-    				for(var i=0;i<comments.length;i++){
-    					list += '<li>' + comments[i] + '</li><br><hr>';
-    				}
-    				var ul = document.getElementById('commentList');
-    				ul.innerHTML = list;
+    				// for(var i=0;i<comments.length;i++){
+    				// 	list += '<li>' + comments[i] + '</li><br><hr>';
+    				// }
+    				var text='<li>'+comment+'</li>'
+    				 document.getElementById('commentList').appendChild();
+    				//ul.innerHTML = list;
     				
     			}
     		}
