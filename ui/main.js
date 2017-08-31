@@ -45,6 +45,9 @@ function logoutfunction(){
              //http request
         	
         	var httpRequest = new XMLHttpRequest();
+        		//Make request
+        	httpRequest.open('GET','http://gopalequal.imad.hasura-app.io/logout',true);
+        	httpRequest.send(null);
         	
         	httpRequest.onreadystatechange = function(){
         		if(httpRequest.readyState == XMLHttpRequest.DONE){
@@ -59,9 +62,7 @@ function logoutfunction(){
         		}
         	};
         	};
-        	//Make request
-        	httpRequest.open('GET','http://gopalequal.imad.hasura-app.io/logout',true);
-        	httpRequest.send(null);
+        
              
          }
     
