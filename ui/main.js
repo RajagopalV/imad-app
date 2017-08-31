@@ -14,7 +14,10 @@ if(button1 !== null){
     			//response received
     			if(httpRequest.status === 200){
     			    alert('Logged in successfully!!');
-    			    document.getElementById('loginSection').innerHTML = "<div><p>Logged in </p><button id='loggout_btn'>Logout</button></div>";
+    			    document.getElementById('loginSection').innerHTML = "<div><p>Logged in </p><button id='logoutbtn'>Logout</button></div>";
+    			    logoutfunction();
+    			    
+    			    
     			} else if(httpRequest.status === 403){
     			    alert('username/password is invalid');
     			}else if(httpRequest.status === 500){
@@ -34,34 +37,35 @@ if(button1 !== null){
     }	
 };
 
-var loggout_button = document.getElementById('loggout_btn');
-
-if(loggout_button !== null){
-     loggout_button.onclick = function(){
-         //http request
-    	
-    	var httpRequest = new XMLHttpRequest();
-    	
-    	httpRequest.onreadystatechange = function(){
-    		if(httpRequest.readyState == XMLHttpRequest.DONE){
-    			//response received
-    			if(httpRequest.status == 200){
-    			    
-    			    res.send("Logged out successfully!!!");
-    			} else {
-    			     res.send("Unable to Logout");
-    			    
-    			    }
-    		}
-    	};
-    	};
-    	//Make request
-    	httpRequest.open('GET','http://gopalequal.imad.hasura-app.io/logout',true);
-    	httpRequest.send(null);
-         
-     }
+function logoutfunction(){
+    var loggout_button = document.getElementById('logoutbtn');
     
-
+    if(loggout_button !== null){
+         loggout_button.onclick = function(){
+             //http request
+        	
+        	var httpRequest = new XMLHttpRequest();
+        	
+        	httpRequest.onreadystatechange = function(){
+        		if(httpRequest.readyState == XMLHttpRequest.DONE){
+        			//response received
+        			if(httpRequest.status == 200){
+        			    
+        			    res.send("Logged out successfully!!!");
+        			} else {
+        			     res.send("Unable to Logout");
+        			    
+        			    }
+        		}
+        	};
+        	};
+        	//Make request
+        	httpRequest.open('GET','http://gopalequal.imad.hasura-app.io/logout',true);
+        	httpRequest.send(null);
+             
+         }
+    
+}
 
 var button = document.getElementById('commentButton');
 
@@ -118,7 +122,8 @@ checkloginfunction();
     			//response received
     			if(httpRequest.status == 200){
     			 if(document.getElementById('loginSection') !== null){
-                    document.getElementById('loginSection').innerHTML = "<div><p>Logged in </p><button id='loggout_btn'>Logout</button></div>";
+                    document.getElementById('loginSection').innerHTML = "<div><p>Logged in </p><button id='logoutbtn'>Logout</button></div>";
+                     logoutfunction();
                     if(button !== null){
                      document.getElementById('commentButton').disabled = false;
                     }
