@@ -185,8 +185,6 @@ app.post('/createuser',function(req,res){
         if(err){
             res.status(403).send(err.toString());
         }else{
-            //session id
-                req.session.auth = {userId : result.rows[0].id};
                 res.send(JSON.stringify(result.rows));
             }
     });
