@@ -54,10 +54,9 @@ function logoutfunction(){
         			//response received
         			if(httpRequest.status == 200){
         			    
-        			    res.send("Logged out successfully!!!");
+        			    alert('logged out !!!');
         			} else {
-        			     res.send("Unable to Logout");
-        			    
+        			     alert('unable to logout');
         			    }
         		}
         	};
