@@ -53,15 +53,14 @@ if(loggout_button !== null){
     			    
     			    }
     		}
-    	}
-    	}
+    	};
+    	};
     	//Make request
     	httpRequest.open('GET','http://gopalequal.imad.hasura-app.io/logout',true);
     	httpRequest.send(null);
          
      }
     
-}
 
 
 var button = document.getElementById('commentButton');
