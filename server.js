@@ -138,7 +138,6 @@ app.get('/ui/main.js', function (req, res) {
 	  res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 	});
 
-var comments = [];
 app.get('/submit-comment', function (req, res) { //submit-comment?comment=xxxx
 	 console.log('Inside submit-comment');
 	var comment = req.query.comment;
@@ -148,14 +147,10 @@ app.get('/submit-comment', function (req, res) { //submit-comment?comment=xxxx
 	    if(err){
             res.status(500).send(err.toString());
         }else{
+                document.getElementById('commentList').appendChild(comment);
                 res.send(JSON.stringify(result.rows));
             }
 	});
-	
-	comments.push(comment);
-	//JSON changes
-	res.send(JSON.stringify(comments));
-	  
 	});
 	
 app.get('/testDb', function (req, res) {
