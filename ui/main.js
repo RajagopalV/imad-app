@@ -53,8 +53,8 @@ if(signup_btn !== null){
     			//response received
     			if(httpRequest.status === 200){
     			    alert('User create and Logged in successfully!!');
-    			    document.getElementById('loginSection').innerHTML = "<div><p>Logged in </p><button id='logoutbtn'>Logout</button></div>";
-    			    logoutfunction();
+    			    document.getElementById('signupSection').innerHTML = "<div></div>";
+    			    //logoutfunction();
     			    
     			    
     			} else if(httpRequest.status === 403){
