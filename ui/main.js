@@ -59,8 +59,11 @@ if(button !== null){
     				// for(var i=0;i<comments.length;i++){
     				// 	list += '<li>' + comments[i] + '</li><br><hr>';
     				// }
-    				var text='<li>'+comment+'</li>'
-    				 document.getElementById('commentList').appendChild(text);
+    				
+    				var list = document.getElementById('commentList');
+    				var entry = document.createElement('li');
+                    entry.appendChild(document.createTextNode(comment));
+                    list.appendChild(entry);
     				//ul.innerHTML = list;
     				
     			}
