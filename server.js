@@ -90,14 +90,14 @@ function createTemplate(data){
     		<script type="text/javascript">
 	        function myFunction(comment){
 	        	var list='';
-				
-				for(var i=0;i<comment.length;i++){
-					list += '<li>' + arguments[i] + '</li>';
+				var array = comment.split(",");
+				for(var i=0;i<array.length;i++){
+					list += '<li>' + array[i] + '</li>';
 				}
 				console.log("myfunction output "+ list);
 				return list;
 	        }
-	        document.getElementById("commentList").innerHTML = myFunction($comment);
+	        document.getElementById("commentList").innerHTML = myFunction(${comment});
 	        </script>
 	     <script type ="text/javaScript" src="/ui/main.js">
 	    </script>
