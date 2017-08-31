@@ -102,7 +102,7 @@ checkloginfunction();
     	}
     	}
     	//Make request
-    	httpRequest.open('POST','http://gopalequal.imad.hasura-app.io/checklogin',true);
+    	httpRequest.open('GET','http://gopalequal.imad.hasura-app.io/checklogin',true);
     	httpRequest.send(null);
 
 
