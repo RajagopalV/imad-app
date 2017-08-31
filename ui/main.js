@@ -53,8 +53,9 @@ function logoutfunction(){
         		if(httpRequest.readyState == XMLHttpRequest.DONE){
         			//response received
         			if(httpRequest.status == 200){
-        			    
+        			    location.reload();
         			    alert('logged out !!!');
+        			    
         			} else {
         			     alert('unable to logout');
         			    }
