@@ -141,8 +141,8 @@ app.get('/ui/main.js', function (req, res) {
 app.get('/submit-comment', function (req, res) { //submit-comment?comment=xxxx
 	 console.log('Inside submit-comment');
 	var comment = req.query.comment;
-	var userId = req.session.auth.userId;
 	var articleId = req.session.auth.articleId;
+	var userId = req.session.auth.userId;
 	pool.query("INSERT INTO comment (article_id,user_id,comment) VALUES ($1,$2,$3)",[articleId,userId,comment],function(err,result){
 	    if(err){
             res.status(500).send(err.toString());
